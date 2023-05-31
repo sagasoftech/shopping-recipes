@@ -9,14 +9,14 @@ export class RecipeService{
     recipeSelected = new EventEmitter<Recipe>();
 
     private recipes: Recipe[] = [
-        new Recipe('The test recipe', 'This is just a test Recipe', 
+        new Recipe('Modak', 'Modak are Maharashtrian festive dumplings', 
         'https://upload.wikimedia.org/wikipedia/commons/a/a1/Kollukattai-Vinayagar-Chathurthi-Recipes.jpg',
         [
             new Ingredient('Meat', 1),
             new Ingredient('French Fries', 20)
         ]),
-        new Recipe('The test recipe2', 'This is just a test Recipe2', 
-        'https://upload.wikimedia.org/wikipedia/commons/a/a1/Kollukattai-Vinayagar-Chathurthi-Recipes.jpg',
+        new Recipe('Pedha', 'Peda or Pera is a mithai from the Indian subcontinent', 
+        'https://upload.wikimedia.org/wikipedia/commons/9/91/Indian_Sweet_Dessert_Peda_in_a_white_bone_china_plate.jpg?20150611053727',
         [
             new Ingredient('Buns', 2),
             new Ingredient('Meat', 1)
@@ -24,6 +24,10 @@ export class RecipeService{
     ];
 
     constructor(private shoppingListService: ShoppingListService) {}
+
+    getRecipeById(index: number){
+        return this.recipes[index];
+    }
 
     getRecipes(){
         return this.recipes.slice();
