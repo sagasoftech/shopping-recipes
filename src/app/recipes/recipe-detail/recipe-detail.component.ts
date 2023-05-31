@@ -15,11 +15,11 @@ export class RecipeDetailComponent implements OnInit{
   id: number;
 
   constructor(private recipeService: RecipeService,
-              private route: Router,
-              private router: ActivatedRoute) {}
+              private router: Router,
+              private route: ActivatedRoute) {}
 
   ngOnInit(): void {
-    this.router.params
+    this.route.params
       .subscribe(
         (params: Params) => {
           this.id = +params['id'];
@@ -32,4 +32,12 @@ export class RecipeDetailComponent implements OnInit{
       this.recipeService.addIngredientsToShoppingList(this.recipe.ingredients);
   }
 
+  onEditRecipe(){
+    /*
+     * No need to pass id as below, because
+     * relative path will take care
+     */
+    //this.router.navigate(['../', this.id, 'edit'], {relativeTo: this.route});
+    this.router.navigate(['edit'], {relativeTo: this.route});
+  }
 }
